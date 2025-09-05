@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB Player Stats</title>
+    <style>
+        /* Basic CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        /* Navigation styling */
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px; /* Added margin for spacing */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #player-search {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #player-search input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #player-search button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #player-search button:hover {
+            background-color: #0056b3;
+        }
+        #player-stats {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .player-card {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .player-card h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .stat-list {
+            list-style: none;
+            padding: 0;
+        }
+        .stat-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation links should be within the body -->
+    <nav>
+        <a href="baseballhistory.html">The History Baseball</a>
+        <a href="baseballstats.html">Baseball Statistics</a>
+    </nav>
+
+    <div class="container">
+        <h1>MLB Player Stats Viewer</h1>
+
+        <div id="player-search">
+            <input type="text" id="player-id-input" placeholder="Enter Player ID (e.g., 660271)">
+            <button onclick="fetchPlayerStats()">Get Stats</button>
+        </div>
+
+        <div id="player-stats">
+            <!-- Player stats will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        async function fetchPlayerStats() {
+            const playerId = document.getElementById('player-id-input').value;
+            const playerStatsDiv = document.getElementById('player-stats');
+            playerStatsDiv.innerHTML = 'Loading stats...';
+
+            try {
+                // Fetch player details (name, team, etc.)
+                const playerDetailsResponse = await fetch(`https://statsapi.mlb.com/api/v1/people/${playerId}`);
+                const playerDetailsData = await playerDetailsResponse.json();
+
+                if (!playerDetailsData || !playerDetailsData.people || playerDetailsData.people.length === 0) {
+                    playerStatsDiv.innerHTML = '<p>Player not found. Please try a different ID.</p>';
+                    return;
+                }
+
+                const player = playerDetailsData.people[0];
+                const playerName = player.fullName;
+                const playerTeam = player.currentTeam ? player.currentTeam.name : 'N/A';
+                const playerPosition = player.primaryPosition ? player.primaryPosition.name : 'N/A';
+
+                // Fetch player stats (adjust endpoint and parameters as needed)
+                // This is a simplified example. A real application would need more specific
+                // endpoint calls for different types of stats (hitting, pitching, etc.) and seasons.
+                const statsResponse = await fetch(`https://statsapi.mlb.com/api/v1/people/${playerId}/stats?stats=season&group=hitting&season=2024`);
+                const statsData = await statsResponse.json();
+
+                let statsHtml = `
+                    <div class="player-card">
+                        <h2>${playerName}</h2>
+                        <p><strong>Team:</strong> ${playerTeam}</p>
+                        <p><strong>Position:</strong> ${playerPosition}</p>
+                        <h3>2024 Hitting Stats:</h3>
+                        <ul class="stat-list">
+                `;
+
+                if (statsData.stats && statsData.stats.length > 0 && statsData.stats[0].splits && statsData.stats[0].splits.length > 0) {
+                    const seasonStats = statsData.stats[0].splits[0].stat;
+                    statsHtml += `
+                        <li>Games Played (G): ${seasonStats.gamesPlayed || 'N/A'}</li>
+                        <li>At Bats (AB): ${seasonStats.atBats || 'N/A'}</li>
+                        <li>Runs (R): ${seasonStats.runs || 'N/A'}</li>
+                        <li>Hits (H): ${seasonStats.hits || 'N/A'}</li>
+                        <li>Home Runs (HR): ${seasonStats.homeRuns || 'N/A'}</li>
+                        <li>Runs Batted In (RBI): ${seasonStats.rbi || 'N/A'}</li>
+                        <li>Batting Average (AVG): ${seasonStats.avg || 'N/A'}</li>
+                        <li>On-Base Percentage (OBP): ${seasonStats.obp || 'N/A'}</li>
+                        <li>Slugging Percentage (SLG): ${seasonStats.slg || 'N/A'}</li>
+                        <li>On-Base Plus Slugging (OPS): ${seasonStats.ops || 'N/A'}</li>
+                    `;
+                } else {
+                    statsHtml += '<li>No hitting stats found for 2024.</li>';
+                }
+
+                statsHtml += `
+                        </ul>
+                    </div>
+                `;
+                playerStatsDiv.innerHTML = statsHtml;
+
+            } catch (error) {
+                console.error('Error fetching player stats:', error);
+                playerStatsDiv.innerHTML = `<p>Error fetching player stats. Please try again. Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
