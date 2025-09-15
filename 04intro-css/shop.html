@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Slam Gear - Your Baseball Shop</title>
+    <style>
+        /* This is for basic styling. For a real site, put this in a separate .css file. */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .header {
+            background-color: #002d72; /* Dark blue, like a uniform */
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .header .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .hero {
+            background-image: url('https://placehold.co/1200x500/004494/FFFFFF/png?text=Swing+for+the+Fences!');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-card .price {
+            font-size: 1.1rem;
+            color: #d32f2f; /* A reddish color for emphasis */
+            font-weight: bold;
+        }
+
+        .product-card button {
+            background-color: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-card button:hover {
+            background-color: #b71c1c;
+        }
+        
+        .footer {
+            background-color: #002d72;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Grand Slam Gear</a>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Bats</a>
+            <a href="#">Gloves</a>
+            <a href="#">Apparel</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <li class="active"><a href="shop.html">Powering our Machines</a></li>
+            <li><a href="index.html">Products</a></li>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Step Up to the Plate</h1>
+                <p>Find the best gear for your game, from the sandlot to the big leagues.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/250x250/E9E9E9/000000/png?text=Baseball+Bat" alt="High-performance baseball bat">
+                    <h3>Pro-Series Baseball Bat</h3>
+                    <p class="price">$199.99</p>
+                    <button>Add to Cart</button>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/250x250/E9E9E9/000000/png?text=Fielder's+Glove" alt="Premium leather fielder's glove">
+                    <h3>All-Star Fielder's Glove</h3>
+                    <p class="price">$149.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/250x250/E9E9E9/000000/png?text=Baseball+Cap" alt="Adjustable baseball cap">
+                    <h3>Team Logo Baseball Cap</h3>
+                    <p class="price">$25.00</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/250x250/E9E9E9/000000/png?text=Baseballs" alt="Official game baseballs">
+                    <h3>Official League Baseballs</h3>
+                    <p class="price">$39.99 (Dozen)</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Grand Slam Gear. All rights reserved.</p>
+    </footer>
+</body>
+</html>
