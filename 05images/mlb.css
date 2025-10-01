@@ -1,0 +1,228 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #ddd;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: white; /* MLB Blue */
+}
+
+.team-table-container {
+    padding: 20px;
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners are applied */
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background-color: #002D5C; /* MLB Blue */
+    color: #ffffff;
+    font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tbody tr:hover {
+    background-color: #e6f7ff; /* Light blue on hover */
+}
+/* Existing styles */
+tbody {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+
+}
+/* ... other styles */
+
+/* New CSS for navigation bar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Ensures the background color covers the full bar */
+    background-color: #002D5C; /* Dark blue background color */
+    border-bottom: 2px solid #ddd;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+}
+/* Universal styles for box model consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles for overall background and font */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #f0f2f5; /* A light gray for a clean look */
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header styles for a clear visual identity */
+header {
+    background-color: #002D62; /* Classic navy blue, like the MLB logo */
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 5px solid #C41E3A; /* Red accent color */
+}
+
+header span {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Navigation bar styling */
+nav {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #e2e8f0;
+    color: #002D62;
+}
+
+nav ul li.active a {
+    color: white;
+    font-weight: 700;
+}
+
+/* Main content area */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flow-root; /* Fixes floated content issue by clearing floats. */
+}
+
+/* Heading styles */
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #C41E3A;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #C41E3A;
+    margin-top: 1.5rem;
+    border-left: 4px solid #002D62;
+    padding-left: 10px;
+}
+
+/* Paragraph and list styling */
+p {
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+li::before {
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Image figure styling for wrapped text */
+.wrapped {
+    float: right;
+    margin: 0 0 1rem 1rem;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background-color: #fff;
+    max-width: 120px; /* Adjust this value as needed */
+}
+
+.wrapped img {
+    display: block;
+    max-width: 100%; /* Image will now be contained within its parent figure */
+    height: auto;
+}
+
+/* Footer styles for the bottom of the page */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #777;
+    font-size: 0.9rem;
+    background-color: #e2e8f0;
+    border-top: 1px solid #ddd;
+}
+
+
+
+
+
+
